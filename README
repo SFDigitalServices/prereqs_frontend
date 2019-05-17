@@ -1,0 +1,14 @@
+## Getting Started
+Install python 3
+Set environment variable for the Prereqs service
+> export PREREQS_SERVICE_URL=http://127.0.0.1:8080
+
+Install pipenv
+Create virtual env and install dependencies
+> pipenv install
+
+Run JSX Preprocessor
+> npx babel --watch admin/src --out-dir admin/static/admin --presets react-app/pro
+
+Start Django dev server
+> python manage.py runserver 8080
