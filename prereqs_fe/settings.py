@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'admin',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,10 @@ STATICFILES_DIRS = [
     '/Users/joshchou/Documents/Projects/prereqs_fe/node_modules/bootstrap/dist/',
     '/Users/joshchou/Documents/Projects/prereqs_fe/admin/static/',
 ]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
+        }
+}

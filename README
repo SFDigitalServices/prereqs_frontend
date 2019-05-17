@@ -9,7 +9,9 @@ Create virtual env and install dependencies
 > pipenv install
 
 Run JSX Preprocessor
+> npm install
 > npx babel --watch admin/src --out-dir admin/static/admin
 
 Start Django dev server
+> pipenv shell
 > python manage.py runserver 8080
