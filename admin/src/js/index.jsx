@@ -2,7 +2,6 @@
 const { BrowserRouter, NavLink, Route } = ReactRouterDOM;
 import {Users} from './users.js';
 
-// YOU DON'T CARE ABOUT THIS
 class App extends React.Component {
     render() {
         return (
@@ -13,7 +12,6 @@ class App extends React.Component {
     }
 }
 
-// This is what you really care about
 class Dashboard extends React.Component {
     render() {
         return (
@@ -45,19 +43,16 @@ class Dashboard extends React.Component {
     }
 }
 
-// This is what you really care about
 class Home extends React.Component {
     render() {
         return <h1>Hello there ! You're on the home page</h1>;
     }
 }
 
-// This is what you could care about
 class Cool extends React.Component {
     render() {
         return <h1>This is the Cool Panel</h1>;
     }
 }
 
-// YOU DON'T CARE ABOUT THIS
 ReactDOM.render(<App />, document.querySelector('#app'));
