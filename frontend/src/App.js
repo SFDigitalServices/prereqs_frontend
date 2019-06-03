@@ -1,26 +1,59 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Route, NavLink} from 'react-router-dom';
+// const { BrowserRouter, NavLink, Route } = ReactRouterDOM;
+import {User} from './user';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    render() {
+        return (
+            <BrowserRouter>
+                <Dashboard />
+            </BrowserRouter>
+        );
+    }
+}
+
+class Dashboard extends React.Component {
+    render() {
+        return (
+            <div id="dashboard">
+                <ul className="nav nav-pills">
+                  <li className="nav-item">
+                    <NavLink exact to="/" className="nav-link">
+                      Home
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink exact to="/users" className="nav-link">
+                      Users
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink exact to="/cool"className="nav-link">
+                      Cool Stuff
+                    </NavLink>
+                  </li>
+                </ul>
+                <div className="content">
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/users" component={User} />
+                  <Route exact path="/cool" component={Cool} />
+                </div>
+            </div>
+        );
+    }
+}
+
+class Home extends React.Component {
+    render() {
+        return <h1>Hello there ! You're on the home page</h1>;
+    }
+}
+
+class Cool extends React.Component {
+    render() {
+        return <h1>This is the Cool Panel</h1>;
+    }
 }
 
 export default App;

@@ -1,4 +1,7 @@
-class Users extends React.Component {
+import React from 'react';
+const axios = require('axios');
+
+class User extends React.Component {
     state = {
         users: [],
         errorMsg: ""
@@ -30,7 +33,7 @@ class Users extends React.Component {
             }
         ).then(response => {
             console.log(response);
-            if (response.data.status == 'error') {
+            if (response.data.status === 'error') {
                 this.setState({
                     errorMsg: response.data.message
                 })
@@ -58,7 +61,7 @@ class Users extends React.Component {
         return (
             <div>
                 <h1>Users</h1>
-                <div className={"alert alert-danger " + (this.state.errorMsg == '' ? 'd-none': 'd-block')}>{this.state.errorMsg}</div>
+                <div className={"alert alert-danger " + (this.state.errorMsg === '' ? 'd-none': 'd-block')}>{this.state.errorMsg}</div>
 
                 <table className="table table-bordered table-striped">
                     <thead className="thead-dark">
@@ -70,7 +73,7 @@ class Users extends React.Component {
                         {this.state.users.map((user, idx)=>(
                             <tr key={user.email}>
                                 <td>{user.email}</td>
-                                <td>{user.is_admin == 1 ? 'yes' : 'no'}</td>
+                                <td>{user.is_admin === 1 ? 'yes' : 'no'}</td>
                                 <td><button type="button" onClick={this.deleteUser.bind(this)} value={user.id}>Delete</button></td>
                             </tr>
                         ))}
@@ -87,4 +90,4 @@ class Users extends React.Component {
     }
 }
 
-export {Users}
+export {User}

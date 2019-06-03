@@ -16,9 +16,10 @@ Including another URLconf
 import admin, api
 from django.urls import include, path
 from django.conf.urls import url
+from . import views
 
 urlpatterns = [
     path('api/', include('api.urls')),
-    url(r'^.*$', include('admin.urls')),
+    url(r'^.*$', views.index, name='index'),
     # path('admin/', include('admin.urls')),
 ]

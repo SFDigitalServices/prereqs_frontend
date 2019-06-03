@@ -55,7 +55,7 @@ ROOT_URLCONF = 'prereqs_fe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,8 +121,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    '/Users/joshchou/Documents/Projects/prereqs_fe/node_modules/bootstrap/dist/',
-    '/Users/joshchou/Documents/Projects/prereqs_fe/admin/static/',
+    os.path.join(BASE_DIR, 'node_modules', 'bootsrap', 'dist'),
+    os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
 ]
 
 WEBPACK_LOADER = {
@@ -131,3 +131,5 @@ WEBPACK_LOADER = {
             'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
         }
 }
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
