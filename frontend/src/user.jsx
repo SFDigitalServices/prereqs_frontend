@@ -1,7 +1,13 @@
 import React from 'react';
+import ReactDataGrid from 'react-data-grid';
 const axios = require('axios');
+const columns = [
+    { key: 'email', name: 'Email', editable: true},
+    { key: 'is_admin', name: 'Admin'}
+];
 
 class User extends React.Component {
+
     state = {
         users: [],
         errorMsg: ""
@@ -57,12 +63,24 @@ class User extends React.Component {
         this.setState({[e.target.name]: e.target.value});
     }
 
+    onGridRowsUpdated(e){
+        debugger;
+        console.log(e);
+    }
+
     render() {
         return (
             <div>
                 <h1>Users</h1>
                 <div className={"alert alert-danger " + (this.state.errorMsg === '' ? 'd-none': 'd-block')}>{this.state.errorMsg}</div>
 
+                <ReactDataGrid
+                    columns={columns}
+                    rowGetter={i => this.state.users[i]}
+                    rowsCount={this.state.users.length}
+                    onGridRowsUpdated={this.onGridRowsUpdated}
+                    enableCellSelect={true} />
+                
                 <table className="table table-bordered table-striped">
                     <thead className="thead-dark">
                         <tr key="header_row">
